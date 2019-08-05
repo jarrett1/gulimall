@@ -1,6 +1,9 @@
 package com.atguigu.gulimall.pms.service.impl;
 
+import com.atguigu.gulimall.pms.entity.SpuInfoEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -25,6 +28,16 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
         );
 
         return new PageVo(page);
+    }
+
+    @Override
+    public List<SpuInfoEntity> queryGoodsByCondition(QueryCondition queryCondition, long catId) {
+        QueryWrapper<SpuInfoEntity> wrapper = new QueryWrapper<>();
+        if(catId != 0){
+            wrapper.eq("catalog_id", catId);
+            //baseMapper.selectOne(queryWrapper)
+        }
+        return null;
     }
 
 }
